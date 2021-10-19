@@ -1,15 +1,18 @@
+CREATE DATEBASE projeto
+
+
 CREATE TABLE vendedor_1(
-	Comissao float not null,
-	Nome varchar(30) Not null,
+	comissao float not null,
+	nome varchar(30) Not null,
 	cpf varchar(30) not null,
-	RG varchar(30) not null,
+	rg varchar(30) not null,
 	senha varchar(30) not null,
-	Email varchar(40) not null,
+	email varchar(40) not null,
 	rua varchar(40) not null,
 	bairro varchar(40) not null,
 	numero int not null,
 	cidade varchar(40) not null,
-	CONSTRAINT pk_Vendedor PRIMARY KEY(RG)
+	CONSTRAINT pk_vendedor_1 PRIMARY KEY(rg)
 );
 INSERT INTO vendedor_1(Comissao,nome,cpf,rg,senha,email,rua,bairro,numero,cidade)
 VALUES('15.30','roberson','586.384.824-89','g43234-5',1234,'roberson@gmail.com','rouxinol','efapi',210,'chapeco');
@@ -30,13 +33,13 @@ VALUES('19.30','Mack','598.401.824-89','M43234-5',4070,'mack@gmail.com','rouxino
 
 CREATE TABLE produtos(
 	tamanho varchar(20) not null,
-	Nome varchar(30) Not null,
+	nome varchar(30) Not null,
 	codigo_prod int not null,
-	Date1 date not null,
-	Peso float not null,
+	date1 date not null,
+	peso float not null,
 	quantidade float not null,
-	Preco float not null,
-	CONSTRAINT pk_Produtos PRIMARY KEY(codigo_prod)
+	preco float not null,
+	CONSTRAINT pk_produtos PRIMARY KEY(codigo_prod)
 	
 );
 
@@ -61,11 +64,11 @@ VALUES('19,40','boné',11,'2020-08-22','77.8','94.2',900.00);
 
 
 CREATE TABLE categoria(
-	Codigo_cate int not null,
-	Roupas_fem varchar(40) not null,
-	Roupas_masc varchar(40) not null,
-	Roupas_Infantil varchar(40) not null,
-	CONSTRAINT PK_Categoria PRIMARY KEY (Codigo_cate)
+	codigo_cate int not null,
+	roupas_fem varchar(40) not null,
+	roupas_masc varchar(40) not null,
+	roupas_infantil varchar(40) not null,
+	CONSTRAINT PK_categoria PRIMARY KEY (codigo_cate)
 );
 
  INSERT INTO categoria(codigo_cate,roupas_fem,roupas_masc,roupas_infantil)
@@ -86,13 +89,13 @@ CREATE TABLE categoria(
 
 
 CREATE TABLE subcategoria (
-	Codigo_sub int not null
-	Blusa varchar(30) not null,
-	Camisa varchar(30) not null,
-	Casaco varchar(30) not null,
-	CONSTRAINT pk_Subcategoria PRIMARY KEY(Codigo_sub) 
-	CONSTRAINT fk_Produtos_codigo FOREIGN KEY(Codigo_sub)references produtos(Codigo_sub),
-	CONSTRAINT fk_Categoria_codigo_cate FOREIGN KEY(codigo_cate) references categoria(codigo_cate)
+	codigo_sub int not null
+	blusa varchar(30) not null,
+	camisa varchar(30) not null,
+	casaco varchar(30) not null,
+	CONSTRAINT pk_subcategoria PRIMARY KEY(codigo_sub) 
+	CONSTRAINT fk_produtos_codigo FOREIGN KEY(codigo_sub)references produtos(codigo_sub),
+	CONSTRAINT fk_categoria_codigo_cate FOREIGN KEY(codigo_cate) references categoria(codigo_cate)
 );
 
  INSERT INTO subcategoria (codigo_sub,blusa,camisa,casaco)
